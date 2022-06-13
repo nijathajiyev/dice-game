@@ -26,13 +26,13 @@ class App extends Component {
   }
 
   startGame() {
-    let randomfirstdice1 = Math.ceil(Math.random() * 6);
-    let randomfirstdice2 = Math.ceil(Math.random() * 6);
-    let randomseconddice1 = Math.ceil(Math.random() * 6);
-    let randomseconddice2=Math.ceil(Math.random()*6);
-    
-    let result1=randomfirstdice1+randomfirstdice2;
-    let result2=randomseconddice1+randomseconddice2;
+    let randomFirstDice1 = Math.ceil(Math.random() * 6);
+    let randomFirstDice2 = Math.ceil(Math.random() * 6);
+    let randomSecondDice1 = Math.ceil(Math.random() * 6);
+    let randomSecondDice2 = Math.ceil(Math.random() * 6);
+
+    let result1 = randomFirstDice1 + randomFirstDice2;
+    let result2 = randomSecondDice1 + randomSecondDice2;
 
     if (this.state.game) {
       return;
@@ -40,14 +40,12 @@ class App extends Component {
 
     this.setState({
       firstCard: {
-        dice1: image[`dice${randomfirstdice1}`],
-        dice2: image[`dice${randomfirstdice2}`],
-        power: randomfirstdice1 + randomfirstdice2,
+        dice1: image[`dice${randomFirstDice1}`],
+        dice2: image[`dice${randomFirstDice2}`],
       },
       secondCard: {
-        dice3: image[`dice${randomseconddice1}`],
-        dice4: image[`dice${randomseconddice2}`],
-        power: randomseconddice1 + randomseconddice2,
+        dice3: image[`dice${randomSecondDice1}`],
+        dice4: image[`dice${randomSecondDice2}`],
       },
       game: true,
       btnName: "Rolling...",
@@ -56,7 +54,7 @@ class App extends Component {
     console.log(result1, "first");
     console.log(result2, "second");
 
-    if(result1>result2) {
+    if (result1 > result2) {
       this.setState({
         score1: this.state.score1 + 1,
         p1: <h5 className="pWin">Win</h5>,
@@ -64,13 +62,15 @@ class App extends Component {
       });
     } else if (result1 < result2) {
       this.setState({
-        score2: this.state.score2+1,
+        score2: this.state.score2 + 1,
         p1: <h5 className="pLost">Lost</h5>,
-        p2: <h5 className="pWin">Win</h5>});
+        p2: <h5 className="pWin">Win</h5>,
+      });
     } else {
       this.setState({
         p1: <h5 className="pDraw">Draw</h5>,
-        p2: <h5 className="pDraw">Draw</h5>});
+        p2: <h5 className="pDraw">Draw</h5>,
+      });
     }
 
     this.setTime();
@@ -85,7 +85,7 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
-        <h1 className="game-header pt-5 pb-3">DICE GAME</h1>
+        <h1 className="game-header pt-5 pb-3 display-1">DICE GAME</h1>
         <h6 className="text-white mb-4">DICE GAME</h6>
         <button className="game-btn" onClick={this.startGame}>
           {this.state.btnName}
