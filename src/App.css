@@ -1,0 +1,107 @@
+.App {
+  text-align: center;
+  background-color: #88b77b;
+  padding: 0 !important;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.game-header{
+  color: #fff;
+  padding-top: 10px;
+}
+
+.game-btn{
+  background-color: #fff;
+  border: none;
+  height: 40px;
+  width: 80px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.game-btn:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+.card-m{
+  width: 100%;
+  border: 1px solid #fff;
+}
+
+.card-h{
+  background-color: #88b77b !important;
+}
+
+.card-b{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.img-shake{
+  animation: shake 0.92s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.pWin{
+  color: #008000;
+}
+
+.pLost{
+  color: #ff0000;
+}
+
+.pDraw{
+  color: #000;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-6px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(7px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-20px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(20px, 0, 0);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
