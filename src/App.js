@@ -73,7 +73,7 @@ class App extends Component {
           p2: <h5 className="pDraw">Draw</h5>,
         });
       }
-    }, 1000);
+    }, 920);
   }
 
   render() {
