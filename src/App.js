@@ -9,8 +9,8 @@ class App extends Component {
     super();
 
     this.state = {
-      firstCard: {},
-      secondCard: {},
+      firstCard: { dice1, dice2: dice1 },
+      secondCard: { dice3: dice1, dice4: dice1 },
       game: false,
       btnName: "Go Roll",
       score1: 0,
@@ -20,7 +20,6 @@ class App extends Component {
     };
 
     this.startGame = this.startGame.bind(this);
-    this.setTime = this.setTime.bind(this);
 
     document.body.style = "background: #777;";
   }
@@ -39,46 +38,41 @@ class App extends Component {
     }
 
     this.setState({
-      firstCard: {
-        dice1: image[`dice${randomFirstDice1}`],
-        dice2: image[`dice${randomFirstDice2}`],
-      },
-      secondCard: {
-        dice3: image[`dice${randomSecondDice1}`],
-        dice4: image[`dice${randomSecondDice2}`],
-      },
       game: true,
       btnName: "Rolling...",
     });
 
-    console.log(result1, "first");
-    console.log(result2, "second");
-
-    if (result1 > result2) {
-      this.setState({
-        score1: this.state.score1 + 1,
-        p1: <h5 className="pWin">Win</h5>,
-        p2: <h5 className="pLost">Lost</h5>,
-      });
-    } else if (result1 < result2) {
-      this.setState({
-        score2: this.state.score2 + 1,
-        p1: <h5 className="pLost">Lost</h5>,
-        p2: <h5 className="pWin">Win</h5>,
-      });
-    } else {
-      this.setState({
-        p1: <h5 className="pDraw">Draw</h5>,
-        p2: <h5 className="pDraw">Draw</h5>,
-      });
-    }
-
-    this.setTime();
-  }
-
-  setTime() {
     setTimeout(() => {
-      this.setState({ game: false, btnName: "Go Roll" });
+      this.setState({
+        game: false,
+        btnName: "Go Roll",
+        firstCard: {
+          dice1: image[`dice${randomFirstDice1}`],
+          dice2: image[`dice${randomFirstDice2}`],
+        },
+        secondCard: {
+          dice3: image[`dice${randomSecondDice1}`],
+          dice4: image[`dice${randomSecondDice2}`],
+        },
+      });
+      if (result1 > result2) {
+        this.setState({
+          score1: this.state.score1 + 1,
+          p1: <h5 className="pWin">Win</h5>,
+          p2: <h5 className="pLost">Lost</h5>,
+        });
+      } else if (result1 < result2) {
+        this.setState({
+          score2: this.state.score2 + 1,
+          p1: <h5 className="pLost">Lost</h5>,
+          p2: <h5 className="pWin">Win</h5>,
+        });
+      } else {
+        this.setState({
+          p1: <h5 className="pDraw">Draw</h5>,
+          p2: <h5 className="pDraw">Draw</h5>,
+        });
+      }
     }, 1000);
   }
 
@@ -104,10 +98,8 @@ class App extends Component {
                   className="img-shake"
                   width="100"
                 />
-              ) : this.state.p1 ? (
-                <img src={this.state.firstCard.dice1} width="100" />
               ) : (
-                <img src={dice1} width="100" />
+                <img src={this.state.firstCard.dice1} width="100" />
               )}
               {this.state.game ? (
                 <img
@@ -115,10 +107,8 @@ class App extends Component {
                   className="img-shake"
                   width="100"
                 />
-              ) : this.state.p1 ? (
-                <img src={this.state.firstCard.dice2} width="100" />
               ) : (
-                <img src={dice1} width="100" />
+                <img src={this.state.firstCard.dice2} width="100" />
               )}
             </Card.Body>
           </Card>
@@ -135,10 +125,8 @@ class App extends Component {
                   className="img-shake"
                   width="100"
                 />
-              ) : this.state.p2 ? (
-                <img src={this.state.secondCard.dice3} width="100" />
               ) : (
-                <img src={dice1} width="100" />
+                <img src={this.state.secondCard.dice3} width="100" />
               )}
               {this.state.game ? (
                 <img
@@ -146,10 +134,8 @@ class App extends Component {
                   className="img-shake"
                   width="100"
                 />
-              ) : this.state.p2 ? (
-                <img src={this.state.secondCard.dice4} width="100" />
               ) : (
-                <img src={dice1} width="100" />
+                <img src={this.state.secondCard.dice4} width="100" />
               )}
             </Card.Body>
           </Card>
